@@ -1,0 +1,12 @@
+li{
+    color: black;
+    background-color: rgb(148, 99, 99);
+    border: 5px solid blueviolet;
+    padding: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.unico_dono{
+    color: red;
+    background-color: rgb(15, 255, 183);
+}
