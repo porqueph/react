@@ -20,8 +20,13 @@ function App() {
   const [words] = useState(wordsList);
 
   const [pickedWord, setPickedWord] = useState("");
-  const [picketCategory, setPickedCategory] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
+
+  const [guessedLetters, setGuessedLetters] = useState([])
+  const [wrongLetters, setWrongLetters] = useState([])
+  const [guesses, setGuesses] = useState(3)
+  const [score, setScore] = useState(0)
 
   const pickWordAndCategory = () =>
   {
@@ -52,14 +57,14 @@ function App() {
 
     setPickedCategory(category);
     setPickedWord(word);
-    setLetters(letters);
+    setLetters(wordLetters);
     setGameStage(stages[1].name);
     
   }
 
   //proccess letter input
   const verifyLetter = () =>{
-    setGameStage(stages[2].name)
+    console.log(letter);
   }
 
 // retry
@@ -71,7 +76,17 @@ function App() {
   return (
     <div className='App'>
       {gameStage === 'Start' && <StartScreen startGame={startGame}/>}
-      {gameStage === 'Game' && <Game verifyLetter={verifyLetter}></Game> }
+      {gameStage === 'Game' && 
+      (<Game 
+      verifyLetter={verifyLetter} 
+      pickedWord={pickedWord} 
+      pickedCategory={pickedCategory}
+      letters={letters}
+      guessedLetters={guessedLetters}
+      wrongLetters={wrongLetters}
+      guesses={guesses}
+      score={score}
+      ></Game> )}
       {gameStage === 'end' && <GameOver retry={retry}></GameOver>}
     </div>
   )
