@@ -12,7 +12,7 @@ function App() {
 
 
     // 4 custom hook
-    const { data: items, httpConfig} = useFetch(url);
+    const { data: items, httpConfig, loading} = useFetch(url);
     console.log(items)
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
@@ -62,6 +62,7 @@ function App() {
     <>
       <div className="App">
         <h1>Lista de produtos</h1>
+        {loading && <p>carregando dados...</p>}
         <ul>
           {items && items.map((product) => (
             <li key={product.id}>{product.name} - {product.price}</li>
