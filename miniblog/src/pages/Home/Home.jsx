@@ -11,11 +11,16 @@ import PostDetail from "../../components/PostDetail";
 
 
 const Home = () => {
+  const navigate = useNavigate()
   const [query, setQuery] = useState("");
   const {documents: posts, loading} = useFetchDocuments("posts");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(query){
+      return navigate(`/search?q=${query}`)
+    }
   };
 
   return (
